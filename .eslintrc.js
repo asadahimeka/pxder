@@ -12,7 +12,7 @@ module.exports = {
 		curly: 'off',
 		camelcase: 'off',
 		'no-case-declarations': 'off',
-		semi: ['error', 'always'],
+		semi: ['warn', 'never'],
 		'comma-dangle': ['error', 'only-multiline'],
 		'space-before-function-paren': 'off',
 		'no-tabs': 'off',
@@ -22,4 +22,4 @@ module.exports = {
 		'no-control-regex': 'off',
 		'prefer-promise-reject-errors': 'off',
 	},
-};
+}

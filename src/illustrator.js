@@ -67,10 +67,13 @@ class Illustrator {
 		let json = {};
 
 		// 请求
-		if (this.next[type]) json = await pixiv.requestUrl(this.next[type]);
-		else {
+		if (this.next[type]) {
+		  console.log('\npixiv.userBookmarksIllust', this.next[type])
+		  json = await pixiv.requestUrl(this.next[type]);
+		}else {
 			if (type == 'illust') json = await pixiv.userIllusts(this.id);
 			else if (type == 'bookmark') {
+			  console.log('\npixiv.userBookmarksIllust', this.id)
 				if (option) json = await pixiv.userBookmarksIllust(this.id, option);
 				else json = await pixiv.userBookmarksIllust(this.id);
 			}
@@ -83,6 +86,8 @@ class Illustrator {
 
 		this.next[type] = json.next_url;
 
+		result.reqID = `${json.next_url?.match(/max_bookmark_id=(\d+)/)?.[1] || 'Z'}_${Date.now().toString()}`;
+		result.reqJSON = json;
 		return result;
 	}
 
